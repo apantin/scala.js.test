@@ -7,6 +7,7 @@ import org.scalajs.dom.ext.Ajax
 import org.scalajs.dom.html
 import shared.Place
 import japgolly.scalajs.react.vdom.html_<^._
+import scala.concurrent.ExecutionContext.Implicits.global
 
 case class PlaceListState(places: Seq[Place])
 

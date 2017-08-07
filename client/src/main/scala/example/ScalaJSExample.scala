@@ -14,6 +14,7 @@ object ScalaJSExample extends js.JSApp {
     case object Excel extends Page
     case object PlaceList extends Page
     case object Test extends Page
+    case object ComponentTest extends Page
 
     private val placeListComponent = ScalaComponent.builder[Unit]("PlaceList")
         .initialState(PlaceListState(Nil))
@@ -30,9 +31,10 @@ object ScalaJSExample extends js.JSApp {
         import dsl._
 
         (emptyRule
-            | staticRoute(root,         Excel)  ~> render(excelDemo())
-            | staticRoute("#PlaceList", PlaceList) ~> render(placeListComponent())
-            | staticRoute("#Test",      Test) ~> render(<.div("Test"))
+            | staticRoute(root,                 Excel)  ~> render(excelDemo())
+            | staticRoute("#PlaceList",         PlaceList) ~> render(placeListComponent())
+            | staticRoute("#Test",              Test) ~> render(<.div("Test"))
+            | staticRoute("#ComponentTest",     ComponentTest) ~> render(ComponentTestPage.component())
         )
         .notFound(redirectToPage(Excel)(Redirect.Replace))
         .renderWith(layout)
@@ -77,7 +79,8 @@ object ScalaJSExample extends js.JSApp {
                             ^.cls := "nav navbar-nav",
                             nav("Excel",                Excel),
                             nav("PlaceList",            PlaceList),
-                            nav("Test",                 Test)
+                            nav("Test",                 Test),
+                            nav("ComponentTest",        ComponentTest)
                         )
                     )
                 )
