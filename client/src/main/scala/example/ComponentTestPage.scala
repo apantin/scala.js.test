@@ -2,7 +2,6 @@ package example
 
 import japgolly.scalajs.react._
 import japgolly.scalajs.react.vdom.html_<^._
-import scala.concurrent.ExecutionContext.Implicits.global
 
 object ComponentTestPage {
 
@@ -16,10 +15,24 @@ object ComponentTestPage {
     )
 
     val component = ScalaComponent.static("Home")(
+        <.div(
             <.div( ^.cls := "row",
                 Suggest.suggest(SuggestProps(stringList))
 
+            ),
+            <.div( ^.cls := "row",
+                SimpleInput.simpleInput(SimpleInputProps(id = "id_1", inputType = TextInputType))
+
+            ),
+            <.div( ^.cls := "row",
+                SimpleInput.simpleInput(SimpleInputProps(id = "id_2", inputType = MemoInputType))
+
+            ),
+            <.div( ^.cls := "row",
+                SimpleInput.simpleInput(SimpleInputProps(id = "id_3", inputType = NumberInputType))
+
             )
+        )
     )
 
 }
