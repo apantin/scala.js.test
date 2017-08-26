@@ -10,12 +10,20 @@ lazy val server = (project in file("server")).settings(
     libraryDependencies ++= Seq(
         "com.vmunier" %% "scalajs-scripts" % "1.1.1",
         guice,
-        specs2 % Test
+        specs2 % Test,
+        "com.typesafe.slick" %% "slick" % "3.2.1",
+        "org.slf4j" % "slf4j-nop" % "1.6.4",
+        "com.typesafe.slick" %% "slick-hikaricp" % "3.2.1",
+        "org.postgresql" % "postgresql" % "42.0.0",
+        "org.slf4j" % "slf4j-nop" % "1.6.4",
+        "com.lihaoyi" %%% "upickle" % "0.4.4"
     ),
     // Compile the project before generating Eclipse files, so that generated .scala or .class files for views and routes are present
     EclipseKeys.preTasks := Seq(compile in Compile)
 ).enablePlugins(PlayScala).
     dependsOn(sharedJvm)
+
+val scalaCSSVersion     = "0.5.3"
 
 lazy val client = (project in file("client")).settings(
     scalaVersion := scalaV,
@@ -24,6 +32,8 @@ lazy val client = (project in file("client")).settings(
         "org.scala-js" %%% "scalajs-dom" % "0.9.1",
         "com.github.japgolly.scalajs-react" %%% "core" % "1.1.0",
         "com.github.japgolly.scalajs-react" %%% "extra" % "1.1.0",
+        "com.github.japgolly.scalacss" %%% "core"      % scalaCSSVersion,
+        "com.github.japgolly.scalacss" %%% "ext-react" % scalaCSSVersion,
         "com.lihaoyi" %%% "upickle" % "0.4.4"
     ),
     jsDependencies ++= Seq(

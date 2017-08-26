@@ -1,5 +1,6 @@
 package example
 
+import example.eve.MarketGroups
 import japgolly.scalajs.react._
 import japgolly.scalajs.react.extra.Reusability
 import japgolly.scalajs.react.extra.router.{BaseUrl, Redirect, Resolution, Router, RouterConfigDsl, RouterCtl}
@@ -15,6 +16,7 @@ object ScalaJSExample extends js.JSApp {
     case object PlaceList extends Page
     case object Test extends Page
     case object ComponentTest extends Page
+    case object EveMarketGroup extends Page
 
     private val placeListComponent = ScalaComponent.builder[Unit]("PlaceList")
         .initialState(PlaceListState(Nil))
@@ -35,6 +37,7 @@ object ScalaJSExample extends js.JSApp {
             | staticRoute("#PlaceList",         PlaceList) ~> render(placeListComponent())
             | staticRoute("#Test",              Test) ~> render(<.div("Test"))
             | staticRoute("#ComponentTest",     ComponentTest) ~> render(ComponentTestPage.component())
+            | staticRoute("#EveMarketGroup",    EveMarketGroup) ~> render(MarketGroups.component())
         )
         .notFound(redirectToPage(Excel)(Redirect.Replace))
         .renderWith(layout)
@@ -80,7 +83,8 @@ object ScalaJSExample extends js.JSApp {
                             nav("Excel",                Excel),
                             nav("PlaceList",            PlaceList),
                             nav("Test",                 Test),
-                            nav("ComponentTest",        ComponentTest)
+                            nav("ComponentTest",        ComponentTest),
+                            nav("EveMarketGroup",        EveMarketGroup)
                         )
                     )
                 )

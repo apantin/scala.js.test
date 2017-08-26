@@ -29,4 +29,5 @@ class Application @Inject()(cc: ControllerComponents) extends AbstractController
         val json = Json.toJson(PlaceService.list)
         Ok(json)
     }
+
 }

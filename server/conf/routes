@@ -3,9 +3,15 @@
 # ~~~~
 
 # Home page
-GET     /                           controllers.Application.index
+GET     /                                       controllers.Application.index
 
-GET     /places                     controllers.Application.listPlaces
+GET     /places                                 controllers.Application.listPlaces
+
+GET     /test                                   controllers.nsi.NsiController.test
+
+
+GET     /nsi/marketGroups                       controllers.nsi.NsiController.marketGroups(parent: Option[Int])
+GET     /nsi/marketTree                         controllers.nsi.NsiController.marketTree
 
 # Prefix must match `play.assets.urlPrefix`
 GET     /assets/*file               controllers.Assets.at(file)

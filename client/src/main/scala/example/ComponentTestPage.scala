@@ -18,21 +18,21 @@ object ComponentTestPage {
         <.div(
             <.div( ^.cls := "row",
                 Suggest.suggest(SuggestProps(stringList))
-
             ),
             <.div( ^.cls := "row",
                 SimpleInput.simpleInput(SimpleInputProps(id = "id_1", inputType = TextInputType))
-
             ),
             <.div( ^.cls := "row",
                 SimpleInput.simpleInput(SimpleInputProps(id = "id_2", inputType = MemoInputType))
-
             ),
             <.div( ^.cls := "row",
                 SimpleInput.simpleInput(SimpleInputProps(id = "id_3", inputType = NumberInputType))
-
-            )
+            ),
+            <.div(ReactTreeViewDemo.apply())
         )
     )
+
+
+
 
 }
