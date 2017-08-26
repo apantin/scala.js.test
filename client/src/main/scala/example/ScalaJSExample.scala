@@ -62,6 +62,9 @@ object ScalaJSExample extends js.JSApp {
             navMenu(c),
             <.div(^.cls := "container", r.render()))
 
+    def data_toggle = VdomAttr("data-toggle")
+    def data_target = VdomAttr("data-target")
+
     private val navMenu = ScalaComponent.builder[RouterCtl[Page]]("Menu")
         .render_P { ctl =>
             def nav(name: String, target: Page) =
@@ -72,8 +75,56 @@ object ScalaJSExample extends js.JSApp {
                     )
 
             <.nav(
-                ^.cls := "navbar navbar-default",
+                ^.cls := "navbar navbar-default navbar-static-top",
                 ^.role := "navigation",
+                <.div( ^.cls := "navbar-header",
+                    <.button(^.`type` := "button",
+                        ^.cls := "navbar-toggle",
+                        data_toggle := "collapse",
+                        data_target := ".navbar-collapse",
+                        <.span(
+                            ^.cls := "sr-only",
+                            "Toggle navigation"
+                        ),
+                        <.span(^.cls := "icon-bar"),
+                        <.span(^.cls := "icon-bar"),
+                        <.span(^.cls := "icon-bar")
+                    ),
+                    <.a(^.cls := "navbar-brand",
+                        ^.href := "/",
+                        "Eve Manager"
+                    )
+                ),
+                <.ul(
+                    ^.cls := "nav navbar-top-links navbar-left",
+                    nav("Excel",                Excel),
+                    nav("PlaceList",            PlaceList),
+                    nav("Test",                 Test),
+                    nav("ComponentTest",        ComponentTest),
+                    nav("EveMarketGroup",        EveMarketGroup)
+                ),
+                <.ul(
+                    ^.cls := "nav navbar-top-links navbar-right",
+                    <.li(
+                        ^.cls := "dropdown",
+                        <.a(
+                            ^.cls := "dropdown-toggle",
+                            <.i(
+                                ^.cls := "fa fa-user fa-fw"
+                            ),
+                            <.i(
+                                ^.cls := "fa fa-caret-down"
+                            )
+                        )
+                    )
+                )
+
+            )
+
+            /*            <.nav(
+                ^.cls := "navbar navbar-default navbar-static-top",
+                ^.role := "navigation",
+                ^.style := "margin-bottom: 0",
                 <.div(
                     ^.cls := "container-fluid",
                     <.div(
@@ -88,7 +139,8 @@ object ScalaJSExample extends js.JSApp {
                         )
                     )
                 )
-            )
+            )*/
+
         }
         .configure(Reusability.shouldComponentUpdate)
         .build

@@ -27,8 +27,7 @@ object ComponentTestPage {
             ),
             <.div( ^.cls := "row",
                 SimpleInput.simpleInput(SimpleInputProps(id = "id_3", inputType = NumberInputType))
-            ),
-            <.div(ReactTreeViewDemo.apply())
+            )
         )
     )
 

@@ -1,13 +1,11 @@
 package example
 
-
 import japgolly.scalajs.react._
 import japgolly.scalajs.react.vdom.html_<^._
 import shared.model.nsi.TreeItem
 
 import scalacss.ScalaCssReact._
 import scala.scalajs.js
-
 
 object ReactTreeView {
 
